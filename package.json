@@ -1,0 +1,29 @@
+{
+  "name": "small-react",
+  "version": "1.0.0",
+  "description": "a react-like lib, help yor understand react better",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ykforerlang/small-react.git"
+  },
+  "keywords": [
+    "react",
+    "fiber",
+    "react-like",
+    "virtual-dom",
+    "lifecycle"
+  ],
+  "author": "ykforerlang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ykforerlang/small-react/issues"
+  },
+  "homepage": "https://github.com/ykforerlang/small-react#readme",
+  "devDependencies": {
+    "webpack": "^4.28.2"
+  }
+}

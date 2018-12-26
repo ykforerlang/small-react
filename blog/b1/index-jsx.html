@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--not use in production, use webpack instead-->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+        /// small-react start
+        function createElement(nodeName, props, children) {
+
+            const {key, ...otherProps} = props || {}
+
+            return {
+                nodeName,
+                key,
+                props: otherProps,
+                children
+            }
+        }
+
+
+        function render(vnode, parentDOM) {
+            if (vnode === undefined || vnode === null || typeof vnode === 'boolean') {
+                return
+            }
+
+
+            if (typeof vnode === 'string') {
+                const dom = document.createTextNode(vnode)
+                parentDOM.appendChild(dom)
+            } else if (typeof vnode.nodeName === 'string') {
+                const dom = document.createElement(vnode.nodeName)
+                for(let i = 0; i < vnode.children.length; i++) {
+                    const item = vnode.children[i]
+                    render(item, dom)
+                }
+                parentDOM.appendChild(dom)
+            } else if (typeof vnode.nodeName === "function") {
+                const inst = new vnode.nodeName()
+                const subVnode = inst.render()
+
+                render(subVnode, parentDOM)
+            }
+
+        }
+
+
+        /// small-react end
+    </script>
+
+    <!-- your code here-->
+    <script type="text/jsx">
+        /** @jsx createElement */
+
+        class A  {
+            render() {
+                return  <div>Hello World</div>
+            }
+        }
+        render(<A/>, document.body)
+    </script>
+</head>
+<body>
+
+</body>
+</html>
